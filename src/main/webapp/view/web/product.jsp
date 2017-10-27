@@ -31,43 +31,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="proMain">
     	<div class="hwpzNav">
     		<ul>
-    			<li class="first"><a class="active" href="/winplus/subject">固收类理财</a></li>
-    			<li class="second"><a href="/winplus/finance">私募基金</a></li>
-    			<li class="three"><a href="/winplus/oversea">海外配置</a></li>
-    			<li class="four"><a href="/winplus/finance">股权基金</a></li>
+    			<li class="first"><a class="active" href="<%=basePath%>product?P_P_PYTE=0">固收类理财</a></li>
+    			<li class="second"><a href="<%=basePath%>product?P_P_PYTE=1">私募基金</a></li>
+    			<li class="three"><a href="<%=basePath%>product?P_P_PYTE=2">海外配置</a></li>
+    			<li class="four"><a href="<%=basePath%>product?P_P_PYTE=3">股权基金</a></li>
     		</ul>
     	</div>
         <div class="sdShaix">
         	<ul>
             	<li class="first">标的类型：</li>
-               		<li><a href="/winplus/subject?cid=11&type=11&yearRate=21&period=31&status=41" id="11">全部</a></li>
-               		<li><a href="/winplus/subject?cid=12&type=11&yearRate=21&period=31&status=41" id="12">固收类理财</a></li>
-               		<li><a href="/winplus/subject?cid=13&type=11&yearRate=21&period=31&status=41" id="13">车盈宝</a></li>
+               		<li><a href="<%=basePath%>product?codevalue='whole'" id="11">全部</a></li>
+               		<c:forEach items="${systemParams}" var="sp">
+               		<li><a href="<%=basePath%>product?codevalue='${sp[3]}'" id="42">${sp[2]}</a></li>
+               		</c:forEach>
             </ul>
         	<ul>
             	<li class="first">年化收益：</li>
-               		<li><a href="/winplus/subject?cid=21&type=11&yearRate=21&period=31&status=41" id="21">全部</a></li>
-               		<li><a href="/winplus/subject?cid=22&type=11&yearRate=21&period=31&status=41" id="22">6.0%</a></li>
-               		<li><a href="/winplus/subject?cid=23&type=11&yearRate=21&period=31&status=41" id="23">7.0%</a></li>
-               		<li><a href="/winplus/subject?cid=24&type=11&yearRate=21&period=31&status=41" id="24">7.5%</a></li>
-               		<li><a href="/winplus/subject?cid=25&type=11&yearRate=21&period=31&status=41" id="25">8.0%</a></li>
-               		<li><a href="/winplus/subject?cid=25&type=11&yearRate=21&period=31&status=41" id="25">8.0%以上</a></li>
+               		<li><a href="<%=basePath%>product?codevalue='whole'">全部</a></li>
+               		<c:forEach items="${pYeardatas}" var="Yeardatas">
+               		<li><a href="<%=basePath%>product?codevalue='${Yeardatas.p_datavalue}'" id="42">${Yeardatas.p_dataname}%</a></li>
+               		</c:forEach>
             </ul>
         	<ul>
             	<li class="first">项目期限：</li>
-               		<li><a href="/winplus/subject?cid=31&type=11&yearRate=21&period=31&status=41" id="31">全部</a></li>
-               		<li><a href="/winplus/subject?cid=32&type=11&yearRate=21&period=31&status=41" id="32">15天以下</a></li>
-               		<li><a href="/winplus/subject?cid=33&type=11&yearRate=21&period=31&status=41" id="33">15-30天</a></li>
-               		<li><a href="/winplus/subject?cid=34&type=11&yearRate=21&period=31&status=41" id="34">30-180天</a></li>
-               		<li><a href="/winplus/subject?cid=35&type=11&yearRate=21&period=31&status=41" id="35">180-365天</a></li>
-               		<li><a href="/winplus/subject?cid=36&type=11&yearRate=21&period=31&status=41" id="36">一年以上</a></li>
+               		<li><a href="<%=basePath%>product?codevalue='whole'">全部</a></li>
+               		<c:forEach items="${systemPeriod}" var="syspd">
+               		<li><a href="<%=basePath%>product?codevalue='${syspd[3]}'" id="42">${syspd[2]}</a></li>
+               		</c:forEach>
             </ul>
         	<ul>
             	<li class="first">标的状态：</li>
-               		<li><a href="/winplus/subject?cid=41&type=11&yearRate=21&period=31&status=41" id="41">全部</a></li>
-               		<li><a href="/winplus/subject?cid=42&type=11&yearRate=21&period=31&status=41" id="42">投标中</a></li>
-               		<li><a href="/winplus/subject?cid=43&type=11&yearRate=21&period=31&status=41" id="43">还款中</a></li>
-               		<li><a href="/winplus/subject?cid=44&type=11&yearRate=21&period=31&status=41" id="44">已完成</a></li>
+               		<li ><a href="<%=basePath%>product?codevalue='whole'">全部</a></li>
+               		<c:forEach items="${systemObj}" var="sys">
+               		<li><a href="<%=basePath%>product?codevalue='${sys[3]}'" id="42">${sys[2]}</a></li>
+               		</c:forEach>
             </ul>
         </div>
 
@@ -81,17 +78,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<ul class="tbList">
 						<li class="first">
 									<span class="ico zq"></span>
-							<h2><em>投</em>${isub[3]}</h2>
+							<h2><em>投</em>${isub[4]}</h2>
 							<i></i>
 						</li>
 						<li class="second">					
 							<div class="txt1">
-								<h2>${isub[7] }</h2>
+								<h2>${isub[8] }</h2>
 								<p>标的总额(万)</p>
 							</div>
 							<div class="txt1">
 								<h2>
-								<fmt:formatNumber type="float"  pattern="#" value="${isub[18]-1 }"  />
+								<fmt:formatNumber type="number"  pattern="#" value="${isub[19]-1 }"  />
 								
 								<span style="font-size:18px;">+1.0%</span></h2>
 								<p>年化收益</p>
@@ -99,25 +96,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 							<div class="txt2">
 								<h2>￥
-								${isub[6]}
+								${isub[7]}
 								</h2>
 								<p>起购金额(元)</p>
 							</div>
 							
 							<div class="txt2">
-								<h2>${isub[10]}天</h2>
+								<h2>${isub[11]}天</h2>
 								<p>投资期限</p>
 							</div>
 						</li>
 						<li class="three">
 								<a href="#1">企业担保</a><span>中国人保财险承保</span>
-								<p>计息日期：当天投资，立即计息<br>已购人数：${isub[26]+isub[31]}人</p>
+								<p>计息日期：当天投资，立即计息<br>已购人数：${isub[27]+isub[32]}人</p>
 						</li>
 						<li class="four">
 								
 						</li>
 						<li class="five">
-							<a class="abtn" href="/winplus/subject/subjectContent/${isub[0]}">购买</a>
+							<a class="abtn" href="/winplus/subject/subjectContent/${isub[1]}">购买</a>
 						</li>
 					</ul>
 					</c:forEach>
